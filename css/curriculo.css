@@ -1,0 +1,72 @@
+/* Página Criar Currículo: dicas e formulário enviado ao Formspree.
+   Somente aparência; campos, nomes e endereço do formulário não mudam aqui. */
+
+.dicas {
+  padding-bottom: 0;
+}
+
+/* Caixa do formulário, alinhada à mesma coluna das dicas. */
+.curriculo {
+  max-width: 820px;
+  margin: var(--esp-6) max(var(--margem-lateral), calc((100% - var(--largura-max)) / 2)) 0;
+  padding: var(--esp-6);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-1);
+}
+
+.curriculo h1 {
+  margin-bottom: var(--esp-5);
+}
+
+.curriculo form {
+  display: flex;
+  flex-direction: column;
+}
+
+.curriculo label {
+  margin-bottom: var(--esp-2);
+  color: var(--cor-texto);
+  font-weight: 600;
+}
+
+.curriculo input,
+.curriculo textarea {
+  margin-bottom: var(--esp-5);
+  padding: 12px 14px;
+}
+
+.curriculo textarea {
+  min-height: 140px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Destaque do campo em uso (além do contorno de foco do teclado). */
+.curriculo input:focus,
+.curriculo textarea:focus {
+  border-color: var(--cor-foco);
+  box-shadow: 0 0 0 3px var(--cor-hover-suave);
+}
+
+.curriculo button[type="submit"] {
+  align-self: flex-start;
+  min-width: 200px;
+}
+
+@media (max-width: 600px) {
+  .curriculo {
+    padding: var(--esp-5) var(--esp-4);
+  }
+
+  .curriculo button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Aviso sobre campos obrigatórios, logo abaixo do título. */
+.dica-formulario {
+  margin: calc(-1 * var(--esp-3)) 0 var(--esp-5);
+  color: var(--cor-texto-suave);
+}

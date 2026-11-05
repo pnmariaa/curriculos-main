@@ -1,0 +1,64 @@
+/* Página inicial: banner com a foto da cidade e lista de novidades. */
+
+/* Banner: a foto externa ocupa a largura toda; o texto fica em um cartão. */
+.banner {
+  display: flex;
+  align-items: center;
+  min-height: 460px;
+  background-color: var(--cpm-azul-escuro);
+  background-image: url("https://www.folhadelondrina.com.br/img/Artigo-Destaque/3160000/Cornelio-Procopio-se-consolida-como-polo-regional-0316522800202202150851.jpg?xid=5674750");
+  background-position: center;
+  background-size: cover;
+}
+
+.apresentacao {
+  max-width: 460px;
+  padding: var(--esp-6);
+  background: var(--cor-superficie);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-3);
+}
+
+.apresentacao h1 {
+  margin-bottom: var(--esp-3);
+}
+
+.apresentacao p {
+  margin: 0 0 var(--esp-5);
+  color: var(--cor-texto-suave);
+  font-size: 1.05rem;
+}
+
+/* Novidades: lista de notícias com marcação lateral institucional. */
+.novidades > h2 {
+  margin-bottom: var(--esp-5);
+}
+
+.noticia {
+  max-width: 820px;
+  margin-bottom: var(--esp-4);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cpm-azul);
+  border-radius: var(--raio-md);
+}
+
+.noticia h3 {
+  margin-bottom: var(--esp-2);
+}
+
+.noticia p {
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+@media (max-width: 600px) {
+  .banner {
+    min-height: 380px;
+  }
+
+  .apresentacao {
+    padding: var(--esp-5);
+  }
+}

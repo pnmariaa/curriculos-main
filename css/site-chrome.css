@@ -1,0 +1,371 @@
+/* =========================================================================
+   Estrutura compartilhada: cabeçalho, menu, rodapé e botão de tema.
+   Todas as páginas usam a mesma marcação (.site-header e .site-footer).
+   Depende das variáveis definidas em css/styles.css.
+   ========================================================================= */
+
+/* Cabeçalho ------------------------------------------------------------- */
+.site-header {
+  /* O foco dourado mantém contraste sobre a faixa azul. */
+  --cor-foco: var(--cpm-dourado);
+  color: var(--cor-faixa-texto);
+  background: var(--cor-faixa);
+  border-bottom: 3px solid var(--cpm-verde);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-5);
+  max-width: calc(var(--largura-max) + 2 * var(--margem-lateral));
+  margin: 0 auto;
+  padding: var(--esp-3) var(--margem-lateral);
+}
+
+/* Logomarca e nome do site; a imagem é quadrada e não é distorcida. */
+.logo {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--esp-3);
+  color: var(--cor-faixa-texto);
+  font-family: var(--fonte-titulo);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Menu principal: links discretos; a página atual recebe um sublinhado verde. */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--esp-1);
+}
+
+.menu a,
+.menu button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: var(--esp-2) var(--esp-3);
+  color: var(--cor-faixa-texto);
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio-sm);
+  box-shadow: inset 0 -3px 0 transparent;
+  font-size: .95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicao), box-shadow var(--transicao);
+}
+
+.menu a:hover,
+.menu button:hover {
+  background: var(--cor-faixa-hover);
+}
+
+/* Página atual: aria-current já existe no HTML; .ativo mantém compatibilidade. */
+.menu a[aria-current="page"],
+.menu a.ativo {
+  background: var(--cor-faixa-hover);
+  box-shadow: inset 0 -3px 0 var(--cpm-verde);
+  font-weight: 700;
+}
+
+/* Ação dentro do menu (ex.: Salvar como PDF) com contorno para se diferenciar dos links. */
+.menu .menu-acao {
+  margin-left: var(--esp-2);
+  border: 1px solid var(--cor-faixa-linha);
+  font-weight: 600;
+}
+
+/* Rodapé ---------------------------------------------------------------- */
+.site-footer {
+  --cor-foco: var(--cpm-dourado);
+  margin-top: var(--esp-8);
+  color: var(--cor-faixa-texto-suave);
+  background: var(--cor-faixa);
+  font-size: .95rem;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--esp-6);
+  max-width: calc(var(--largura-max) + 2 * var(--margem-lateral));
+  margin: 0 auto;
+  padding: var(--esp-7) var(--margem-lateral) var(--esp-6);
+}
+
+.footer-titulo {
+  margin: 0 0 var(--esp-3);
+  color: var(--cor-faixa-texto);
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+}
+
+.footer-info p {
+  max-width: 40ch;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-2);
+}
+
+.footer-links a {
+  color: var(--cor-faixa-texto);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-contato p {
+  margin: 0 0 var(--esp-2);
+}
+
+.copyright {
+  max-width: calc(var(--largura-max) + 2 * var(--margem-lateral));
+  margin: 0 auto;
+  padding: var(--esp-4) var(--margem-lateral) var(--esp-5);
+  border-top: 1px solid var(--cor-faixa-linha);
+  font-size: .85rem;
+  text-align: center;
+}
+
+/* Botão de tema (fixo, ao lado do botão do chatbot) ----------------------- */
+.theme-toggle {
+  position: fixed;
+  right: 96px;
+  bottom: 30px;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: 44px;
+  padding: 6px 12px;
+  color: var(--cor-texto);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pilula);
+  box-shadow: var(--sombra-2);
+  cursor: pointer;
+}
+
+.theme-icon {
+  display: inline-flex;
+  color: var(--cor-texto-suave);
+}
+
+.theme-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.theme-track {
+  display: inline-flex;
+  align-items: center;
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  background: var(--cor-borda-campo);
+  border-radius: var(--raio-pilula);
+  transition: background-color var(--transicao);
+}
+
+.theme-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform var(--transicao);
+}
+
+body.dark-mode .theme-track {
+  background: var(--cpm-azul);
+}
+
+body.dark-mode .theme-thumb {
+  transform: translateX(16px);
+}
+
+/* Botão do menu móvel (js/menu.js). Fica oculto até o script ativá-lo,
+   para que o menu continue acessível mesmo sem JavaScript. */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: 44px;
+  padding: var(--esp-2) var(--esp-3);
+  color: var(--cor-faixa-texto);
+  background: transparent;
+  border: 1px solid var(--cor-faixa-linha);
+  border-radius: var(--raio-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background: var(--cor-faixa-hover);
+}
+
+.menu-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.menu-toggle .icone-fechar,
+.menu-toggle[aria-expanded="true"] .icone-abrir {
+  display: none;
+}
+
+.menu-toggle[aria-expanded="true"] .icone-fechar {
+  display: block;
+}
+
+/* Telas médias: o menu passa para a linha de baixo. */
+@media (max-width: 1020px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-3);
+  }
+
+  .menu {
+    justify-content: flex-start;
+  }
+
+  .menu .menu-acao {
+    margin-left: 0;
+  }
+}
+
+/* Página com ação extra no menu (Salvar como PDF): empilha mais cedo para não quebrar a linha. */
+@media (max-width: 1180px) {
+  .site-nav:has(.menu-acao) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-3);
+  }
+
+  .site-nav:has(.menu-acao) .menu {
+    justify-content: flex-start;
+  }
+
+  .menu .menu-acao {
+    margin-left: 0;
+  }
+}
+
+/* Celulares e zoom alto: menu recolhido atrás do botão "Menu". */
+@media (max-width: 700px) {
+  .site-nav.tem-menu-movel {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tem-menu-movel .logo {
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .tem-menu-movel .menu-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  /* Fechado: display none também tira os links da ordem do Tab. */
+  .tem-menu-movel .menu {
+    display: none;
+  }
+
+  .tem-menu-movel.menu-aberto .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-basis: 100%;
+    gap: var(--esp-1);
+    padding-top: var(--esp-2);
+    border-top: 1px solid var(--cor-faixa-linha);
+  }
+
+  .tem-menu-movel .menu a,
+  .tem-menu-movel .menu button {
+    justify-content: flex-start;
+    min-height: 44px;
+    padding-inline: var(--esp-3);
+    text-align: left;
+  }
+
+  /* Na lista vertical, a página atual é marcada por uma barra à esquerda. */
+  .tem-menu-movel .menu a[aria-current="page"],
+  .tem-menu-movel .menu a.ativo {
+    box-shadow: inset 4px 0 0 var(--cpm-verde);
+  }
+}
+
+/* Celulares: logo menor e rodapé empilhado. Sem JavaScript, o menu vira grade. */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  .logo img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .site-nav:not(.tem-menu-movel) .menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .site-nav:not(.tem-menu-movel) .menu a,
+  .site-nav:not(.tem-menu-movel) .menu button {
+    justify-content: center;
+    text-align: center;
+    background: var(--cor-faixa-hover);
+  }
+
+  /* Um item sobrando na última linha ocupa a largura toda. */
+  .site-nav:not(.tem-menu-movel) .menu > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: var(--esp-5);
+  }
+
+  /* Reserva espaço para os botões flutuantes não cobrirem o fim da página. */
+  .copyright {
+    padding-bottom: 88px;
+  }
+
+  .theme-toggle {
+    right: 84px;
+    bottom: 22px;
+  }
+}
